@@ -37,8 +37,8 @@ This project includes several GitHub Actions workflows for continuous integratio
 
 To use these workflows, you need to set up the following secrets in your GitHub repository:
 
-1. `DOCKERHUB_USERNAME` - Your DockerHub username
-2. `DOCKERHUB_TOKEN` - Your DockerHub access token
+1. `DOCKER_USERNAME` or `DOCKERHUB_USERNAME` - Your DockerHub username
+2. `DOCKER_PASSWORD` or `DOCKERHUB_TOKEN` - Your DockerHub access token
 
 ## Local Development
 
