@@ -1,0 +1,32 @@
+name: Deploy to Production
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production server
+        run: |
+          echo "Deploying to production server..."
+          # Add your specific deployment commands here
+          # Example deployment options:
+          # 1. Deploy to a cloud provider (AWS, GCP, Azure)
+          # 2. Deploy to a VPS using SSH
+          # 3. Deploy to a container orchestration platform
+          
+          # For a simple deployment using Docker:
+          # ssh user@your-server.com 'cd /path/to/your/app && git pull && docker-compose down && docker-compose up -d'
+          
+          # For Heroku deployment:
+          # git push heroku main
+          
+          # For a Kubernetes deployment:
+          # kubectl apply -f k8s/deployment.yaml

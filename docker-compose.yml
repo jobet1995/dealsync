@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      # Persist the SQLite database file
+      - ./db.sqlite3:/app/db.sqlite3
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PORT=8000
+      - DJANGO_SETTINGS_MODULE=dealsync.settings.dev
+    # Use Django's development server with auto-reload for development
+    command: python manage.py runserver 0.0.0.0:8000
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/app/static
+      - ./media:/app/media
+    depends_on:
+      - web
