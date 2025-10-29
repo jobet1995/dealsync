@@ -34,13 +34,7 @@ jobs:
 
       - name: Security scan with Bandit
         run: |
-          bandit -r . -f sarif -o bandit-report.sarif || true
-
-      - name: Upload bandit results
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: bandit-report.sarif
+          bandit -r . -f json -o bandit-report.json || true
 
   test:
     runs-on: ubuntu-latest
